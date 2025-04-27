@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/">
+    <link rel="stylesheet" href="page2.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header  class="header">
+            <div >
+                <img src="logo-removebg-preview.png" alt="Medical Logo" class="logo" >
+            </div>
+            <DIV>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> services publiques <button class="notification-badge"> 1</button> </a> </li>
+                        <li><a href="#"><i class="fas fa-user"></i> Mon compte</a></li>
+                        <li class="dropdown"><a href="#"><i class="fas fa-history"></i> Historique médical et financier ▼ </a></li>
+                    </ul>
+                </nav>
+            </DIV> 
+        </header> 
+
+        <div class="invoice-panel">
+            
+            
+            <div class="invoice-details">
+                <h3>Détails des services:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>service</th>
+                            <th>Prix(MAD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>consultation générale</td>
+                            <td>300.00</td>
+                        </tr>
+                        <tr>
+                            <td>Analyse de Sang</td>
+                            <td>600.00</td>
+                        </tr>
+                        <tr>
+                            <td>Radiologie</td>
+                            <td>150.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+               
+        
+            </div>
+    
+            
+            <div class="payment-content">
+                <div class="payment-methods">
+                    <img src="mastercard.png" alt="MasterCard">
+                    <img src="paypal.png" alt="PayPal">
+                    <img src="visa.png" alt="Visa">
+                    <img src="cmi.png" alt="CMI">
+                </div>
+                
+                <form class="payment-form">
+                    <div class="form-group">
+                        <label>Nom sur la carte</label>
+                        <input type="text" placeholder="Nom">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>N° de carte</label>
+                        <div class="card-input">
+                            <input type="text" placeholder="•••• •••• •••• ••••">
+                            <i class="far fa-credit-card"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Date d'expiration</label>
+                        <input type="text" placeholder="MM/AA">
+                    </div>
+                    
+                    <button type="submit" class="pay-button">payer</button>
+                </form>
+                
+                <button class="download-button">
+                    <i class="fas fa-download"></i>
+                    Télécharger la facture PDF
+                </button>
+            </div>
+        </div>
+          
+    </div>
+        
+     
+        
+
+    </div>
+</body>
+</html>   
