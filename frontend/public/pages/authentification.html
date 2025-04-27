@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Connexion</title>
+    <style>
+      body {
+        background-color: #f7f0f7;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      #header-placeholder {
+        width: 100%;
+      }
+      .main-content {
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+      }
+      .login-container {
+        background-color: white;
+        border: 5px solid #d3d3d3;
+        border-radius: 10px;
+        padding: 20px;
+        width: 300px;
+        box-sizing: border-box;
+        text-align: left;
+      }
+      .login-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #333;
+      }
+      .login-container input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+        /* Ajouté pour que tous les inputs aient la même apparence */
+        height: 40px;
+      }
+      .login-container button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .login-container a {
+        display: block;
+        margin-top: 15px;
+        font-size: 13px;
+        color: #333;
+        text-decoration: underline;
+        text-align: center;
+      }
+      .error-message {
+        color: red;
+        font-size: 13px;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+
+    <div class="main-content">
+      <div class="login-container">
+        <form id="loginForm">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="email@abc.ab" required />
+
+          <label for="password">mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="********"
+            required
+          />
+
+          <button type="submit">se connecter</button>
+
+          <a href="#">oublier mot de passe?</a>
+        </form>
+        <div id="error" class="error-message"></div>
+      </div>
+    </div>
+
+    <script>
+      // Charger dynamiquement le header
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+        });
+
+      // Gestion du formulaire
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // empêcher l'envoi classique
+
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+
+          if (email === "a1" && password === "a2") {
+            window.location.href = "A1.html";
+          } else if (email === "b1" && password === "b2") {
+            window.location.href = "B2.html";
+          } else {
+            document.getElementById("error").textContent =
+              "Identifiants incorrects.";
+          }
+        });
+    </script>
+  </body>
+</html>
