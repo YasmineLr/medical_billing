@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Medical Dashboard</title>
+    <link rel="stylesheet" href="page5.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">MED<br />ICAL</div>
+      <div class="search-bar">
+        <input type="text" placeholder="Rechercher..." />
+        <button>+</button>
+      </div>
+      <div class="socials">
+        <i class="icon">f</i>
+        <i class="icon">i</i>
+        <i class="icon">in</i>
+        <span>Nos contacts</span>
+        <a href="#">Aide?</a>
+        <a href="#">FR</a>
+      </div>
+    </header>
+
+    <nav class="navbar">
+      <a href="#">Accueil</a>
+      <a href="#">Services publiques</a>
+      <a href="#">Mon compte</a>
+      <a href="#">Historique médical et financier</a>
+    </nav>
+
+    <div class="main">
+      <div class="sidebar">
+        <button>Voir mes Rendez-vous</button>
+        <button>Patients</button>
+        <button>Factures</button>
+        <button>Services médicaux</button>
+        <button>
+          Notifications
+          <span class="badge">3</span>
+        </button>
+        <button>Déconnexion & Paramètres du Compte</button>
+      </div>
+
+      <div class="content">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Nom patient</th>
+                <th>Service concerné</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>20/12/2024</td>
+                <td>11:00</td>
+                <td>Mohamed</td>
+                <td>Consultation</td>
+                <td class="termine">Terminé</td>
+              </tr>
+              <tr>
+                <td>21/12/2024</td>
+                <td>08:30</td>
+                <td>Salma</td>
+                <td>Contrôle</td>
+                <td class="termine">Terminé</td>
+              </tr>
+              <tr>
+                <td>31/12/2024</td>
+                <td>16:00</td>
+                <td>Ahmed</td>
+                <td>Consultation</td>
+                <td class="confirme">Confirmé</td>
+              </tr>
+              <tr>
+                <td>02/01/2025</td>
+                <td>10:00</td>
+                <td>Salim</td>
+                <td>Consultation</td>
+                <td class="attente">En attente</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Adresse : Boulevard Med 6 immeuble Saada étage 3 appart N°6 Oujda
+    </footer>
+  </body>
+</html>
