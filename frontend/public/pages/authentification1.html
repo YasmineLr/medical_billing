@@ -154,7 +154,8 @@
           const prenom = document.getElementById("prenom").value.trim();
 
           if (nom && prenom) {
-            window.location.href = "suivant.html";
+            alert("Étape suivante...");
+            // ici, tu pourrais rediriger vers une autre étape (email, mot de passe, etc.)
           } else {
             document.getElementById("error").textContent =
               "Veuillez remplir tous les champs.";

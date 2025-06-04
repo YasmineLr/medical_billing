@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Connexion</title>
+    <title>Finaliser l'inscription</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       html {
@@ -36,26 +36,11 @@
         text-align: left;
       }
 
-      .login-tabs {
-        display: flex;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        overflow: hidden;
-      }
-
-      .login-tabs a {
-        flex: 1;
+      .login-container h2 {
         text-align: center;
-        padding: 12px 0;
-        font-weight: bold;
-        text-decoration: none;
-        color: black;
-        background-color: #ccc;
-      }
-
-      .login-tabs a.active {
-        background-color: #28a745;
-        color: white;
+        color: #28a745;
+        margin-bottom: 20px;
+        font-size: 20px;
       }
 
       .login-container label {
@@ -65,7 +50,8 @@
         color: #333;
       }
 
-      .login-container input {
+      .login-container input,
+      .login-container select {
         width: 100%;
         padding: 8px;
         margin-bottom: 15px;
@@ -88,15 +74,6 @@
         cursor: pointer;
       }
 
-      .login-container a.link {
-        display: block;
-        margin-top: 15px;
-        font-size: 13px;
-        color: #333;
-        text-decoration: underline;
-        text-align: center;
-      }
-
       .error-message {
         color: red;
         font-size: 13px;
@@ -107,79 +84,105 @@
   </head>
 
   <body>
-    <!-- Header -->
     <div id="header-placeholder"></div>
 
-    <!-- Contenu principal -->
     <div class="main-content">
       <div class="login-container">
-        <!-- Onglets -->
-        <div class="login-tabs">
-          <a href="authentification.html">PREMIÈRE CONNEXION ?</a>
-          <a href="pageconnexion.html" class="active">J’AI DÉJÀ UN COMPTE</a>
-        </div>
+        <h2>Compléter votre inscription</h2>
+        <form id="finalForm">
+          <label for="age">Âge *</label>
+          <input type="number" id="age" placeholder="Ex: 30" required />
 
-        <!-- Formulaire -->
-        <form id="loginForm">
-          <label for="email">Votre email ou N° d’adhérent *</label>
-          <input type="email" id="email" placeholder="email@abc.ab" required />
+          <label for="sexe">Sexe *</label>
+          <select id="sexe" required>
+            <option value=""></option>
+            <option value="Homme">Homme</option>
+            <option value="Femme">Femme</option>
+          </select>
 
-          <label for="password">Votre mot de passe *</label>
+          <label for="tel">Numéro de téléphone *</label>
+          <input type="tel" id="tel" placeholder="06 12 34 56 78" required />
+
+          <label for="adresse">Adresse *</label>
           <input
-            type="password"
-            id="password"
-            placeholder="********"
+            type="text"
+            id="adresse"
+            placeholder="Votre adresse"
             required
           />
 
-          <button type="submit">SE CONNECTER</button>
-          <a class="link" href="#">J’ai oublié mon mot de passe</a>
+          <label for="email">Adresse email *</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="email@exemple.com"
+            required
+          />
+
+          <label for="code">Entrer le code *</label>
+          <input type="password" id="code" placeholder="Code secret" required />
+
+          <label for="confirmCode">Confirmer le code *</label>
+          <input
+            type="password"
+            id="confirmCode"
+            placeholder="Répétez le code"
+            required
+          />
+
+          <button type="submit">S'INSCRIRE</button>
         </form>
+
         <div id="error" class="error-message"></div>
       </div>
     </div>
 
-    <!-- Footer -->
     <div id="footer-placeholder"></div>
 
-    <!-- JS -->
     <script>
-      // Charger le header dynamiquement
       fetch("header.html")
         .then((res) => res.text())
         .then((data) => {
           document.getElementById("header-placeholder").innerHTML = data;
         });
 
-      // Charger le footer dynamiquement
       fetch("footer.html")
         .then((res) => res.text())
         .then((data) => {
           document.getElementById("footer-placeholder").innerHTML = data;
-          if (window.location.hash === "#footer") {
-            const target = document.getElementById("footer");
-            if (target) {
-              target.scrollIntoView({ behavior: "smooth" });
-            }
-          }
         });
 
-      // Gestion du formulaire
       document
-        .getElementById("loginForm")
+        .getElementById("finalForm")
         .addEventListener("submit", function (e) {
           e.preventDefault();
 
+          const age = document.getElementById("age").value.trim();
+          const sexe = document.getElementById("sexe").value;
+          const tel = document.getElementById("tel").value.trim();
+          const adresse = document.getElementById("adresse").value.trim();
           const email = document.getElementById("email").value.trim();
-          const password = document.getElementById("password").value.trim();
+          const code = document.getElementById("code").value.trim();
+          const confirmCode = document
+            .getElementById("confirmCode")
+            .value.trim();
 
-          if (email === "a1" && password === "a2") {
-            window.location.href = "A1.html";
-          } else if (email === "b1" && password === "b2") {
-            window.location.href = "B2.html";
-          } else {
+          if (
+            !age ||
+            !sexe ||
+            !tel ||
+            !adresse ||
+            !email ||
+            !code ||
+            !confirmCode
+          ) {
             document.getElementById("error").textContent =
-              "Identifiants incorrects.";
+              "Veuillez remplir tous les champs.";
+          } else if (code !== confirmCode) {
+            document.getElementById("error").textContent =
+              "Les codes ne correspondent pas.";
+          } else {
+            window.location.href = "pageconnexion.html";
           }
         });
     </script>
