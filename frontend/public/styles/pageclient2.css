@@ -38,6 +38,10 @@ body {
     font-weight: bold;
     cursor: pointer;
   }
+  .BUtton:hover {
+    background-color: #28a745;
+    color: white;
+  }
 
 
   .social-icons img {
