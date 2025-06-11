@@ -145,7 +145,7 @@
     <!-- JS -->
     <script>
       // Charger le header dynamiquement
-      fetch("header.html")
+      fetch("header3.html")
         .then((res) => res.text())
         .then((data) => {
           document.getElementById("header-placeholder").innerHTML = data;
@@ -181,6 +181,39 @@
             document.getElementById("error").textContent =
               "Identifiants incorrects.";
           }
+        });
+      // Gestion du formulaire
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+
+          fetch("/medical_billing/frontend/dto/check_login.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `email=${encodeURIComponent(
+              email
+            )}&password=${encodeURIComponent(password)}`,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                window.location.href = "pageequipe.html";
+              } else {
+                document.getElementById("error").textContent =
+                  "Identifiants incorrects.";
+              }
+            })
+            .catch((error) => {
+              console.error("Erreur :", error);
+              document.getElementById("error").textContent =
+                "Erreur de communication avec le serveur.";
+            });
         });
     </script>
   </body>
