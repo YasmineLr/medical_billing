@@ -3,65 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <title>Espace administrateur</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
       body {
+        background-color: #f7f0f7;
         font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        padding-top: 200px;
       }
 
-      /* HEADER */
-      header {
-        background-color: #fff;
+      .header-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 9999;
+      }
+
+      .navbar-custom {
+        background-color: #28a745;
+        border-radius: 30px;
+        margin: 20px 20px 0 20px;
+      }
+
+      .social-icons img {
+        width: 24px;
+        margin: 0 5px;
+      }
+
+      .BUtton {
+        background-color: white;
+        border: 2px solid #28a745;
+        border-radius: 30px;
+        color: #28a745;
         padding: 10px 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo img {
-        height: 100px;
-      }
-      
-      .top-links {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 14px;
-      }
-
-      .top-links a {
-        color: #333;
-        text-decoration: none;
-      }
-
-      /* NAVBAR */
-      .navbar {
-        background-color: #2ecc71;
-        display: flex;
-        justify-content: space-around;
-        padding: 12px 0;
-      }
-
-      .navbar a {
-        color: white;
-        text-decoration: none;
+        margin: 20px 0 -20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         font-weight: bold;
-        padding: 0 20px;
+        cursor: pointer;
       }
 
-      .navbar a:hover {
-        background-color: #27ae60;
-        border-radius: 5px;
+      .BUtton:hover {
+        background-color: #28a745;
+        color: white;
       }
 
-      /* TABLEAU */
+      .navbar-nav {
+        display: flex;
+        width: 100%;
+      }
+
+      .nav-item {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        border-radius: 30px;
+        cursor: pointer;
+      }
+
+      .nav-link {
+        color: white !important;
+      }
+
+      .icon-noir {
+        color: black;
+      }
+
+      .nav-item:hover {
+        background-color: #41c25f;
+      }
+
+      .active {
+        background-color: #41c25f;
+      }
+
+      .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-item:hover {
+        background-color: #41c25f;
+      }
+
+      .custom-dropdown {
+        top: 100%;
+        left: 0;
+        margin-top: 0.5rem;
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        margin: 0px 90px 0px 30px;
+        padding: 0px 30px;
+        background-color: white;
+      }
+
+      .dropdown-item {
+        padding: 10px 40px;
+      }
+
       .content {
         padding: 20px;
       }
@@ -85,12 +127,12 @@
         border: 1px solid #ddd;
       }
 
-      /* STATUTS */
       .status {
         display: inline-block;
         width: 15px;
         height: 15px;
         border-radius: 50%;
+        transition: transform 0.3s ease;
       }
 
       .status.partial {
@@ -105,7 +147,10 @@
         background-color: #e74c3c;
       }
 
-      /* LÉGENDE */
+      .status:hover {
+        transform: scale(1.5);
+      }
+
       .legend {
         margin-top: 20px;
         text-align: left;
@@ -121,37 +166,116 @@
         margin-right: 10px;
       }
 
-      /* FOOTER */
       footer {
         margin-top: 40px;
         font-size: 14px;
         color: #777;
         text-align: left;
       }
+
+      tbody tr:hover {
+        background-color: #f2f2f2;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+      }
     </style>
   </head>
-
   <body>
-    <header>
-      <div class="logo">
-        <img src="../icones/healthlogo.png" alt="Logo" />
-      </div>
-      <div class="top-links">
-          <span>Nos contacts</span>
-          <a href="#">Aide?</a>
-          <a href="#">FR</a>
+    <!-- HEADER & NAVBAR -->
+    <div class="header-container">
+      <div
+        class="container py-3 d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center">
+          <img
+            src="../icones/healthlogo.png"
+            alt="Logo"
+            class="me-2"
+            width="170vw"
+            height="170vh"
+            style="margin-bottom: -50vh; margin-top: -50vh"
+          />
+        </div>
+        <div>
+          <button class="BUtton">RENDEZ-VOUS</button>
         </div>
       </div>
-    </header>
 
-    <nav class="navbar">
-      <a href="#">Voir mes Rendez-vous</a>
-      <a href="#">Patients</a>
-      <a href="#">Factures</a>
-      <a href="#">Services médicaux</a>
-      <a href="#">Déconnexion & Paramètres du Compte</a>
-    </nav>
+      <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+          <div class="collapse navbar-collapse justify-content-center">
+            <ul class="navbar-nav">
+              <li class="nav-item mx-1">
+                <a
+                  class="nav-link text-white d-flex align-items-center"
+                  href="#"
+                >
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+                    width="20"
+                    class="me-1"
+                  />
+                  cabinet
+                </a>
+              </li>
+              <li class="nav-item mx-1">
+                <a
+                  class="nav-link text-white d-flex align-items-center"
+                  href="#"
+                >
+                  <i class="fas fa-users me-1 icon-noir"></i>
+                  Equipe
+                </a>
+              </li>
+              <li class="nav-item mx-1">
+                <a
+                  class="nav-link text-white d-flex align-items-center"
+                  href="#"
+                >
+                  <i class="fas fa-phone-alt me-1 icon-noir"></i>
+                  Contact
+                </a>
+              </li>
+              <li class="nav-item dropdown mx-1 active">
+                <a
+                  class="nav-link dropdown-toggle text-white d-flex align-items-center"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                >
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png"
+                    width="20"
+                    class="me-1"
+                  />
+                  Mon compte
+                </a>
+                <ul
+                  class="dropdown-menu custom-dropdown"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li>
+                    <a class="dropdown-item" href="page7.html">Mon profil</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Historique de paiement</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="page5.html"
+                      >Mes rendez-vous</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
 
+    <!-- CONTENU -->
     <section class="content">
       <table>
         <thead>
@@ -174,7 +298,13 @@
             <td>500 MAD</td>
             <td>300 MAD</td>
             <td>200 MAD</td>
-            <td><span class="status partial"></span></td>
+            <td>
+              <span
+                class="status partial"
+                data-bs-toggle="tooltip"
+                title="Partiellement payée"
+              ></span>
+            </td>
             <td><a href="#">Télécharger</a></td>
           </tr>
           <tr>
@@ -184,7 +314,13 @@
             <td>500 MAD</td>
             <td>500 MAD</td>
             <td>0 MAD</td>
-            <td><span class="status paid"></span></td>
+            <td>
+              <span
+                class="status paid"
+                data-bs-toggle="tooltip"
+                title="Payée"
+              ></span>
+            </td>
             <td><a href="#">Télécharger</a></td>
           </tr>
           <tr>
@@ -194,7 +330,13 @@
             <td>250 MAD</td>
             <td>0 MAD</td>
             <td>250 MAD</td>
-            <td><span class="status unpaid"></span></td>
+            <td>
+              <span
+                class="status unpaid"
+                data-bs-toggle="tooltip"
+                title="Non payée"
+              ></span>
+            </td>
             <td><a href="#">Télécharger</a></td>
           </tr>
           <tr>
@@ -204,7 +346,13 @@
             <td>300 MAD</td>
             <td>300 MAD</td>
             <td>0 MAD</td>
-            <td><span class="status paid"></span></td>
+            <td>
+              <span
+                class="status paid"
+                data-bs-toggle="tooltip"
+                title="Payée"
+              ></span>
+            </td>
             <td><a href="#">Télécharger</a></td>
           </tr>
           <tr>
@@ -214,7 +362,13 @@
             <td>1050 MAD</td>
             <td>1050 MAD</td>
             <td>0 MAD</td>
-            <td><span class="status paid"></span></td>
+            <td>
+              <span
+                class="status paid"
+                data-bs-toggle="tooltip"
+                title="Payée"
+              ></span>
+            </td>
             <td><a href="#">Télécharger</a></td>
           </tr>
         </tbody>
@@ -230,5 +384,63 @@
         Adresse: Boulevard Med 6 immeuble Saada étage 3 appart N°6 Oujda
       </footer>
     </section>
+
+    <!-- MODAL -->
+    <div
+      class="modal fade"
+      id="downloadModal"
+      tabindex="-1"
+      aria-labelledby="downloadModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="downloadModalLabel">Téléchargement</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fermer"
+            ></button>
+          </div>
+          <div class="modal-body">
+            📄 Votre fichier est prêt à être téléchargé.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fermer
+            </button>
+            <a href="#" class="btn btn-success">Télécharger</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tooltipTriggerList = document.querySelectorAll(
+          '[data-bs-toggle="tooltip"]'
+        );
+        [...tooltipTriggerList].forEach((el) => new bootstrap.Tooltip(el));
+
+        const links = document.querySelectorAll("td a");
+        links.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const modal = new bootstrap.Modal(
+              document.getElementById("downloadModal")
+            );
+            modal.show();
+          });
+        });
+      });
+    </script>
   </body>
 </html>
