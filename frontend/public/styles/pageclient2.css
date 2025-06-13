@@ -11,7 +11,7 @@ body {
     width: 100%;
     
     background-color: white;
-  
+    z-index: 9999;
   }
   .navbar-custom {
     background-color: #28a745;
@@ -24,7 +24,7 @@ body {
     font-weight: bold;
     font-size: 24px;
     position: fixed;
-    z-index: index; 
+    z-index: 10000;
   }
 
   .BUtton {
@@ -44,11 +44,7 @@ body {
   }
 
 
-  .social-icons img {
-    width: 50px;
-    margin: -10px;
-    padding: 0px 0px 0px 30px;
-  }
+ 
   .navbar-nav {
     border-radius: 10px;
     
@@ -198,6 +194,16 @@ hr {
   }
 
 
+.soignant-option.selected {
+  background-color: #28a745; 
+  border: 2px solid #28a745; 
+}
+
+
+
+
+
+
 
 
 /* Invoice panel styles */
@@ -264,101 +270,123 @@ table th {
     margin-top: 20px;
 }
 
+.service-row.selected {
+    background-color: #28a745 !important;
+    color: white;
+}
+
+
+
 
 
 /* Payment panel styles */
-.payment-panel {
-    background-color: #e7e6e6;
-    border-radius: 10px;
-    overflow: hidden;
-    border-color: #c0c0c0;
-    border:10px;
+ .payment-panel {
+      background-color: #e7e6e6;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 20px;
+      
+      
+    }
+
+    .payment-content {
+      padding: 20px;
+      font-size: large;
+    }
+
+    .payment-methods {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 0;
+    }
+
+    .payment-methods img {
+      height: 30px;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      
+    } 
+    .payment-methods img {
+    z-index: 1 !important;
 }
 
-.payment-history button {
-    width: 100%;
-    padding: 15px;
-    background-color: #c0c0c0;
-    border: none;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
+    
 
-.payment-content {
-    padding: 20px;
-    font-size:large;
-}
+    .payment-methods img.selected {
+      opacity: 1;
+      border: 2px solid #28a745;
+      border-radius: 5px;
+      position: relative;
+      z-index: 0;
+    }
 
-.payment-methods {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
+    .form-group {
+      margin-bottom: 15px;
+    }
 
-.payment-methods img {
-    height: 30px;
-}
+    .form-group label {
+      display: block;
+      color: black;
+      margin-bottom: 5px;
+    }
 
-.form-group {
-    margin-bottom: 15px;
-}
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
 
-.form-group label {
-    display: block;
-    color: black;
-    margin-bottom: 5px;
-}
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 3px;
+    }
 
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
+    .card-input {
+      position: relative;
+    }
 
-.card-input {
-    position: relative;
-}
+    .card-input i {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+    }
 
+    .pay-button,
+    .download-button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 12px;
+      width: 100%;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
 
-.card-input i {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #888;
-}
+    .download-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
 
-.pay-button {
-    background-color:  #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 0;
-    width: 100%;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-}
+    .download-button i {
+      margin-right: 10px;
+    }
 
-.download-button {
-    background-color:  #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 12px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-top: 30px;
-}
-
-.download-button i {
-    margin-right: 10px;
-}
+    #success-message {
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+    }
 
 
 
