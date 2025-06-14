@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Finaliser l'inscription</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: #f7f0f7;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      #header-placeholder,
+      #footer-placeholder {
+        width: 100%;
+      }
+
+      .main-content {
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+      }
+
+      .login-container {
+        background-color: white;
+        border: 5px solid #d3d3d3;
+        border-radius: 10px;
+        padding: 20px;
+        width: 320px;
+        box-sizing: border-box;
+        text-align: left;
+      }
+
+      .login-container h2 {
+        text-align: center;
+        color: #28a745;
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+
+      .login-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #333;
+      }
+
+      .login-container input,
+      .login-container select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+        height: 40px;
+      }
+
+      .login-container button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 13px;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="header-placeholder"></div>
+
+    <div class="main-content">
+      <div class="login-container">
+        <h2>Compléter votre inscription</h2>
+        <form id="finalForm">
+          <label for="age">Âge *</label>
+          <input type="number" id="age" placeholder="Ex: 30" required />
+
+          <label for="sexe">Sexe *</label>
+          <select id="sexe" required>
+            <option value=""></option>
+            <option value="Homme">Homme</option>
+            <option value="Femme">Femme</option>
+          </select>
+
+          <label for="tel">Numéro de téléphone *</label>
+          <input type="tel" id="tel" placeholder="06 12 34 56 78" required />
+
+          <label for="adresse">Adresse *</label>
+          <input
+            type="text"
+            id="adresse"
+            placeholder="Votre adresse"
+            required
+          />
+
+          <label for="email">Adresse email *</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="email@exemple.com"
+            required
+          />
+
+          <label for="code">Entrer le code *</label>
+          <input type="password" id="code" placeholder="Code secret" required />
+
+          <label for="confirmCode">Confirmer le code *</label>
+          <input
+            type="password"
+            id="confirmCode"
+            placeholder="Répétez le code"
+            required
+          />
+
+          <button type="submit">S'INSCRIRE</button>
+        </form>
+
+        <div id="error" class="error-message"></div>
+      </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+      fetch("header3.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+        });
+
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
+
+      document
+        .getElementById("finalForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const age = document.getElementById("age").value.trim();
+          const sexe = document.getElementById("sexe").value;
+          const tel = document.getElementById("tel").value.trim();
+          const adresse = document.getElementById("adresse").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const code = document.getElementById("code").value.trim();
+          const confirmCode = document
+            .getElementById("confirmCode")
+            .value.trim();
+
+          if (
+            !age ||
+            !sexe ||
+            !tel ||
+            !adresse ||
+            !email ||
+            !code ||
+            !confirmCode
+          ) {
+            document.getElementById("error").textContent =
+              "Veuillez remplir tous les champs.";
+          } else if (code !== confirmCode) {
+            document.getElementById("error").textContent =
+              "Les codes ne correspondent pas.";
+          } else {
+            window.location.href = "pageconnexion.html";
+          }
+        });
+    </script>
+  </body>
+</html>

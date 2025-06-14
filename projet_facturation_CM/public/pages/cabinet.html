@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cabinet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles externes -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #fdfdfd;
+      }
+
+      #header-placeholder,
+      #footer-placeholder {
+        width: 100%;
+      }
+
+      .hero-section {
+        background: url("/frontend/public/icones/cabinet.png") no-repeat center
+          center;
+        background-size: cover;
+        background-color: #32b05e;
+        color: white;
+        padding: 100px 30px;
+        text-align: left;
+      }
+
+      .hero-section h1 {
+        font-size: 48px;
+        font-weight: bold;
+      }
+
+      .hero-section p {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+
+      .content-section {
+        padding: 50px 15%;
+        color: #333;
+      }
+
+      .content-section h2 {
+        color: #32b05e;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .content-section img {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+
+      .content-section a {
+        color: #32b05e;
+        text-decoration: none;
+      }
+
+      .content-section a:hover {
+        text-decoration: underline;
+      }
+
+      .content-section strong {
+        color: #222; /* pour éviter le bleu automatique des <strong> si lié à Bootstrap */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Section principale -->
+    <!-- Section principale -->
+    <!-- Section principale -->
+    <!-- Section principale -->
+    <section class="hero-section">
+      <h1>CABINET DE MÉDECINE GÉNÉRALE</h1>
+      <p>
+        Situé à Oujda – Rue Al Andalous, Bâtiment Essaâda, Étage 2, Appartement
+        6<br />
+        Prise de rendez-vous sur place ou par téléphone<br />
+        Horaires : Du lundi au vendredi de 09h à 19h – Le samedi de 09h à 13h
+      </p>
+    </section>
+
+    <!-- Contenu descriptif -->
+    <section class="content-section">
+      <h2>VOTRE CABINET MÉDICAL À OUJDA</h2>
+      <p>
+        Notre <strong>cabinet médical</strong> vous accueille pour tous vos
+        besoins de santé générale : suivi régulier, maladies courantes,
+        certificats médicaux, orientation vers spécialistes si besoin.
+      </p>
+
+      <p>
+        Nous nous engageons à offrir un service de qualité, accessible et à
+        l’écoute, dans un environnement professionnel, au cœur de la ville
+        d’Oujda.
+      </p>
+
+      <img src="/frontend/public/icones/cabinet.png" alt="Photo du cabinet" />
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script>
+      fetch("header3.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+        });
+
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+
+          if (window.location.hash === "#footer") {
+            const target = document.getElementById("footer");
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Medical Site - Bootstrap</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="../styles/pageclient2.css">  
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header-container" >
+      <div
+      class="container py-3 d-flex justify-content-between align-items-center"
+    >
+      <div class="d-flex align-items-center">
+        <img
+          src="../icones/healthlogo.png"
+          alt="Logo"
+          class="me-2"
+          width="200vw"
+          height="200vh"
+          style="margin-bottom: -50vh; margin-top: -45vh"
+        />
+      </div>
+
+      <DIV>
+        <BUtton class="BUtton">RENDEZ-VOUS </BUtton>
+      </DIV>
+
+      
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container">
+        <div class="collapse navbar-collapse justify-content-center">
+          <ul class="navbar-nav">
+            <li class="nav-item mx-1">
+              <a class="nav-link text-white d-flex align-items-center" href="#">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+                  width="20"
+                  class="me-1"
+                />
+                cabinet
+              </a>
+            </li>
+            <li class="nav-item mx-1 ">
+              <a class="nav-link text-white d-flex align-items-center" href="#">
+                <i class="fas fa-users me-1 icon-noir"></i>
+                Equipe
+              </a>
+            </li>
+            <li class="nav-item  mx-1 " >
+                <a class="nav-link text-white d-flex align-items-center" href="#">
+                  <i class="fas fa-phone-alt me-1 icon-noir"></i>
+                Contact  
+                </a>
+              </li>
+              <li class="nav-item dropdown mx-1 active">
+                <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="navbarDropdown" role="button">
+                  <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" width="20" class="me-1" />
+                  Mon compte
+                </a>
+                <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Se connecter</a></li>
+                  <li><a class="dropdown-item" href="#">Créer un compte</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+                </ul>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+
+    </div> 
+    
+    <div class="text">
+      <h1 > <strong> Prenez votre rendez-vous en ligne </strong></h1>
+    </div> 
+
+    <!-- Main content -->
+    <div class="content-container">
+       
+        <div class="info-panel">
+            
+    
+            <h2> <strong> Choisissez un soignant :</strong></h2>
+            
+            <div class="soignant-option no-preference">
+              <img src="/frontend/public/icones/DOCTEUR.jpeg"  class="soignant-img me-3">
+              <div>
+                <div class="soignant-name">Je n'ai pas de préférence</div>
+                <div class="soignant-specialty">Voir les créneaux de tous les soignants</div>
+              </div>
+                
+            </div>
+            
+            <hr>
+            
+            <div class="soignant-option">
+              <img src="/frontend/public/icones/DOCTEUR.jpeg"  class="soignant-img me-3">
+              <div>
+                <div class="soignant-name">Je n'ai pas de préférence</div>
+                <div class="soignant-specialty">Voir les créneaux de tous les soignants</div>
+              </div>
+            </div>
+            
+            <hr>
+            
+            <div class="soignant-option">
+              <img src="/frontend/public/icones/DOCTEUR.jpeg"  class="soignant-img me-3">
+              <div>
+                <div class="soignant-name">Je n'ai pas de préférence</div>
+                <div class="soignant-specialty">Voir les créneaux de tous les soignants</div>
+              </div>
+            </div>
+        </div>
+
+        <!-- Middle panel - Invoice details -->
+        <div class="invoice-panel">
+           
+            <div class="invoice-header">
+                <h2> <strong> Choisissez le service que vous convient :</strong></h2>
+            </div>
+            
+            <div class="invoice-details">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>service</th>
+                            <th>Prix(MAD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>consultation générale</td>
+                            <td>300.00</td>
+                        </tr>
+                        <tr>
+                            <td>consultation en ligne</td>
+                            <td>250.00</td>
+                        </tr>
+                        <tr>
+                            <td>Visite à domile</td>
+                            <td>400.00</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>Echographie</td>
+                            <td>200.00</td>
+                        </tr>
+                        <tr>
+                            <td>Electrocardiogramme</td>
+                            <td>100.00</td>
+                        </tr>
+                        
+
+                        
+                    </tbody>
+                </table>
+                
+            
+                
+                
+            </div>
+            <button type="submit" class="pay-button">CONFIRMER VOTRE RENDEZ-VOUS</button>
+            <div>
+              **Pour les consultations en ligne ou à domicile, le paiement en ligne est obligatoire afin de confirmer votre rendez-vous
+            </div> 
+        </div>
+
+        <!-- Right panel - Payment -->
+        <div class="payment-panel">
+            
+            
+            <div class="payment-content">
+                <div class="payment-methods">
+                    <img src="../icones/mastercard.png" alt="MasterCard">
+                    <img src="../icones/paypal.png" alt="PayPal">
+                    <img src="../icones/visa.png" alt="Visa">
+                    <img src="../icones/cmi.png" alt="CMI">
+                </div>
+                
+                <form class="payment-form">
+                    <div class="form-group">
+                        <label>Nom sur la carte</label>
+                        <input type="text" placeholder="Nom">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>N° de carte</label>
+                        <div class="card-input">
+                            <input type="text" placeholder="•••• •••• •••• ••••">
+                            <i class="far fa-credit-card"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Date d'expiration</label>
+                        <input type="text" placeholder="MM/AA">
+                    </div>
+                    
+                    <button type="submit" class="pay-button">payer</button>
+                </form>
+                
+                <button class="download-button">
+                    <i class="fas fa-download"></i>
+                    Télécharger la facture PDF
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex align-items-center">
+      <div class="social-icons me-4">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+          alt="Facebook"
+        />
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+          alt="Instagram"
+        />
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png"
+          alt="LinkedIn"
+        />
+      </div>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

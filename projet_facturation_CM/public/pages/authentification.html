@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inscription</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: #f7f0f7;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      #header-placeholder,
+      #footer-placeholder {
+        width: 100%;
+      }
+
+      .main-content {
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+      }
+
+      .login-container {
+        background-color: white;
+        border: 5px solid #d3d3d3;
+        border-radius: 10px;
+        padding: 20px;
+        width: 320px;
+        box-sizing: border-box;
+        text-align: left;
+      }
+
+      .login-tabs {
+        display: flex;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .login-tabs a {
+        flex: 1;
+        text-align: center;
+        padding: 12px 0;
+        font-weight: bold;
+        text-decoration: none;
+        color: black;
+        background-color: #ccc;
+      }
+
+      .login-tabs a.active {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .login-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #333;
+      }
+
+      .login-container input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+        height: 40px;
+      }
+
+      .login-container button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 13px;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+      <div class="login-container">
+        <!-- Onglets -->
+        <div class="login-tabs">
+          <a href="authentification.html" class="active"
+            >PREMIÈRE CONNEXION ?</a
+          >
+          <a href="pageconnexion.html">J’AI DÉJÀ UN COMPTE</a>
+        </div>
+
+        <!-- Formulaire -->
+        <form id="signupForm">
+          <label for="nom">Nom *</label>
+          <input type="text" id="nom" placeholder="Votre nom" required />
+
+          <label for="prenom">Prénom *</label>
+          <input type="text" id="prenom" placeholder="Votre prénom" required />
+
+          <button type="submit">SUIVANT</button>
+        </form>
+
+        <div id="error" class="error-message"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      // Charger le header dynamiquement
+      fetch("header3.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+        });
+
+      // Charger le footer dynamiquement
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
+
+      // Validation simple
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const nom = document.getElementById("nom").value.trim();
+          const prenom = document.getElementById("prenom").value.trim();
+
+          if (nom && prenom) {
+            window.location.href = "suivant.html";
+          } else {
+            document.getElementById("error").textContent =
+              "Veuillez remplir tous les champs.";
+          }
+        });
+    </script>
+  </body>
+</html>
