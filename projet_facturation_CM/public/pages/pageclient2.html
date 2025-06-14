@@ -8,7 +8,7 @@
   
 
 
-    <link rel="stylesheet" href="page1.css">  
+    <link rel="stylesheet" href="../styles/pageclient2.css">  
     <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -22,7 +22,7 @@
     >
       <div class="d-flex align-items-center">
         <img
-          src="healthlogo.png"
+          src="../icones/healthlogo.png"
           alt="Logo"
           class="me-2"
           width="200vw"
@@ -32,7 +32,7 @@
       </div>
 
       <DIV>
-        <BUtton class="BUtton">RENDEZ-VOUS </BUtton>
+        <button class="button">RENDEZ-VOUS </button>
       </DIV>
 
       
@@ -54,7 +54,7 @@
               </a>
             </li>
             <li class="nav-item mx-1 ">
-              <a class="nav-link text-white d-flex align-items-center" href="MON EQUIPE.html""
+              <a class="nav-link text-white d-flex align-items-center" href="MON EQUIPE.html">
                 <i class="fas fa-users me-1 icon-noir"></i>
                 Equipe
               </a>
@@ -94,15 +94,15 @@
     <div class="content-container">
        
         <div class="info-panel">
-            
-    
-            <h2> <strong> Choisissez un soignant :</strong></h2>
+            <form action="paiement.php" method="post" id="soignantForm">
+              <input type="hidden" name="soignant" id="hiddenSoignantInput">
+              <h2> <strong> Choisissez un soignant :</strong></h2>
             
             <div class="soignant-option no-preference">
-              <img src="docteur1.jpg"  class="soignant-img me-3">
+              <img src="../icones/docteur1.png"  class="soignant-img me-3">
               <div>
-                <div class="soignant-name">Je n'ai pas de préférence</div>
-                <div class="soignant-specialty">Voir les créneaux de tous les soignants</div>
+                <div class="soignant-name"> Dr Amine benali</div>
+                <div class="soignant-specialty">Généraliste</div>
               </div>
                 
             </div>
@@ -110,40 +110,60 @@
             <hr>
             
             <div class="soignant-option">
-              <img src="docteur2.jpg"  class="soignant-img me-3">
+              <img src="../icones/docteur2.jpg"  class="soignant-img me-3">
               <div>
-                <div class="soignant-name">Je n'ai pas de préférence</div>
-                <div class="soignant-specialty">Voir les créneaux de tous les soignants</div>
+                <div class="soignant-name"> Dr Ahmed chaoui</div>
+                <div class="soignant-specialty">Généraliste</div>
               </div>
             </div>
             
             <hr>
             
             <div class="soignant-option">
-              <img src="docteur3.jpg"  class="soignant-img me-3">
+              <img src="../icones/docteur3.jpg"  class="soignant-img me-3">
               <div>
-                <div class="soignant-name">Je n'ai pas de préférence</div>
-                <div class="soignant-specialty">Voir les créneaux de tous les soignants</div>
+                <div class="soignant-name"> Dr Hanae sabir</div>
+                <div class="soignant-specialty">Généraliste</div>
               </div>
             </div>
-
-            
-            <script>
-            const soignants = document.querySelectorAll('.soignant-option');
-            soignants.forEach(soignant => {
-            soignant.addEventListener('click', () => {
-            soignants.forEach(s => s.classList.remove('selected'));
-            soignant.classList.add('selected');
-            });
-            });
-            </script>
+             
+            <button type="button" id="confirmSoignant" class="pay-button">CONFIRMER VOTRE SOIGNANT</button>
 
 
-
+            </form>
+  
 
         </div>
+
+       <script>
+  const soignants = document.querySelectorAll('.soignant-option');
+  let selectedSoignant = null;
+
+  soignants.forEach(soignant => {
+    soignant.addEventListener('click', () => {
+      soignants.forEach(s => s.classList.remove('selected'));
+      soignant.classList.add('selected');
+      selectedSoignant = soignant.getAttribute('data-soignant');
+    });
+  });
+
+  document.getElementById('soignantForm').addEventListener('submit', function (e) {
+    if (!selectedSoignant) {
+      e.preventDefault(); // Empêche l'envoi du formulaire
+      alert("Veuillez sélectionner un soignant avant de confirmer.");
+      return;
+    }
+
+    // Insère le nom du soignant dans l'input caché
+    document.getElementById('hiddenSoignantInput').value = selectedSoignant;
+  });
+</script>
+
+
           <!-- Middle panel - Invoice details -->
         <div class="invoice-panel">
+          <form action="paiement.php" method="post" id="serviceForm"> 
+           <input type="hidden" name="service" id="hiddenServiceInput">
           <div class="invoice-header">
            <h2><strong>Choisissez le service que vous convient :</strong></h2>
           </div>
@@ -158,78 +178,78 @@
               </thead>
               <tbody>
                 <tr class="service-row" data-service="consultation générale">
+                   
                     <td>consultation générale</td>
                     <td>300.00</td>
                 </tr>
                 <tr class="service-row" data-service="consultation en ligne">
+                
                     <td>consultation en ligne</td>
                     <td>250.00</td>
                 </tr>
-                <tr class="service-row" data-service="Visite à domile">
-                    <td>Visite à domile</td>
+                <tr class="service-row" data-service="Visite à domile">   
+                    
+                    <td>Visite à domicile</td>
                     <td>400.00</td>
                 </tr>
                 <tr class="service-row" data-service="Echographie">
+                    
                     <td>Echographie</td>
                     <td>200.00</td>
                 </tr>
                 <tr class="service-row" data-service="Electrocardiogramme">
+                    
                     <td>Electrocardiogramme</td>
                     <td>100.00</td>
                 </tr>
               </tbody>
            </table>
          </div>
+ 
+          <button type="button" class="pay-button">CONFIRMER VOTRE SERVICE</button>
+          
+  
+          </form>
 
-          <button type="button" class="pay-button">CONFIRMER VOTRE RENDEZ-VOUS</button>
-          <div id="alert-message" class="mt-3"></div>
-    
+         
+
           <div class="mt-3 text-muted">
            **Pour les consultations en ligne ou à domicile, le paiement en ligne est obligatoire afin de confirmer votre rendez-vous
           </div>
        </div>
-  
+          
 
        <script>
-          let selectedService = null;
+  let selectedService = null;
 
-           // Gère la sélection de ligne
-          document.querySelectorAll('.service-row').forEach(row => {
-          row.addEventListener('click', () => {
-            // Supprimer la sélection des autres
-          document.querySelectorAll('.service-row').forEach(r => r.classList.remove('selected'));
+  // Gère la sélection de ligne
+  document.querySelectorAll('.service-row').forEach(row => {
+    row.addEventListener('click', () => {
+      document.querySelectorAll('.service-row').forEach(r => r.classList.remove('selected'));
+      row.classList.add('selected');
+      selectedService = row.getAttribute('data-service');
+    });
+  });
 
-            // Ajouter la classe sélectionnée à la ligne cliquée
-          row.classList.add('selected');
+  
 
-            // Stocker le service choisi
-            selectedService = row.getAttribute('data-service');
-           });
-           });
-
-          // Gère la confirmation
-           document.querySelector('.pay-button').addEventListener('click', () => {
-          const alertDiv = document.getElementById('alert-message');
-          alertDiv.innerHTML = '';
-
-          if (!selectedService) {
-            alertDiv.innerHTML = `<div class="alert alert-warning">⚠️ Veuillez d'abord sélectionner un service.</div>`;
-            return;
-          }
-
-          const lower = selectedService.toLowerCase();
-          if (lower === 'consultation en ligne' || lower === 'visite à domile') {
-          alertDiv.innerHTML = `<div class="alert alert-danger">❌ Pour <strong>${selectedService}</strong>, vous devez d'abord payer en ligne pour confirmer votre rendez-vous.</div>`;
-          } else {
-            alertDiv.innerHTML = `<div class="alert alert-success">✅ Rendez-vous pour <strong>${selectedService}</strong> confirmé avec succès.</div>`;
-         }
-         });
-       </script>
+  // Gère le bouton "CONFIRMER LE CHOIX" (soumission formulaire)
+  document.getElementById('serviceForm').addEventListener('submit', function(event) {
+    if (!selectedService) {
+      event.preventDefault(); // Empêche l'envoi du formulaire
+      alert("Veuillez sélectionner un service avant de confirmer.");
+    } else {
+      // Remplir le champ caché avec le service choisi
+      document.getElementById('hiddenServiceInput').value = selectedService;
+      // Le formulaire s'envoie normalement
+    }
+  });
+</script>
 
 
-
-
-
+        <input type="hidden" name="soignant" value="Dr Dupont">
+        <input type="hidden" name="service" value="Consultation">
+        <input type="hidden" name="amount" value="50">
 
 
 
@@ -239,10 +259,10 @@
           
          <form id="payment-form" action="process_payment.php" method="POST">
         <div class="payment-methods" id="card-selection">
-          <img src="mastercard.png" alt="MasterCard" data-card="MasterCard">
-          <img src="paypal.png" alt="PayPal" data-card="PayPal">
-          <img src="visa.png" alt="Visa" data-card="Visa">
-          <img src="cmi.png" alt="CMI" data-card="CMI">
+          <img src="../icones/mastercard.png" alt="MasterCard" data-card="MasterCard">
+          <img src="../icones/paypal.png" alt="PayPal" data-card="PayPal">
+          <img src="../icones/visa.png" alt="Visa" data-card="Visa">
+          <img src="../icones/cmi.png" alt="CMI" data-card="CMI">
         </div>
         <input type="hidden" name="card_type" id="card-type">
 
@@ -270,7 +290,7 @@
         <button type="submit" class="pay-button">Payer</button>
       </form>
 
-      <form action="generate_pdf.php" method="POST">
+      <form action="facture.php" method="POST">
         <button type="submit" class="download-button">
           <i class="fas fa-download"></i>
           Télécharger la facture PDF
