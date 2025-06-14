@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Finaliser l'inscription</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/suivant.css">  
+  </head>
+
+  <body>
+    <script src="../js/suivant.js"></script>
+
+    <div id="header-placeholder"></div>
+    <div class="main-content">
+      <div class="login-container">
+        <h2>Compléter votre inscription</h2>
+          <form id="finalForm">
+            <label for="age">Âge *</label>
+            <input type="number" id="age" placeholder="Ex: 30" required />
+
+            <label for="sexe">Sexe *</label>
+            <select id="sexe" required>
+              <option value=""></option>
+              <option value="Homme">Homme</option>
+              <option value="Femme">Femme</option>
+            </select>
+
+            <label for="tel">Numéro de téléphone *</label>
+            <input type="tel" id="tel" placeholder="06 12 34 56 78" required />
+
+            <label for="adresse">Adresse *</label>
+            <input
+              type="text"
+              id="adresse"
+              placeholder="Votre adresse"
+              required/>
+
+            <label for="email">Adresse email *</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="email@exemple.com"
+              required/>
+
+            <label for="code">Entrer le code *</label>
+            <input type="password" id="code" placeholder="Code secret" required />
+
+            <label for="confirmCode">Confirmer le code *</label>
+            <input
+              type="password"
+              id="confirmCode"
+              placeholder="Répétez le code"
+              required/>
+
+            <button type="submit">S'INSCRIRE</button>
+          </form>
+        <div id="error" class="error-message"></div>
+      </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+  </body>
+</html>
