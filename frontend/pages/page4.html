@@ -209,7 +209,7 @@
               <li class="nav-item mx-1">
                 <a
                   class="nav-link text-white d-flex align-items-center"
-                  href="#"
+                  href="cabinet.html"
                 >
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
@@ -222,7 +222,7 @@
               <li class="nav-item mx-1">
                 <a
                   class="nav-link text-white d-flex align-items-center"
-                  href="#"
+                  href="pageequipe.html"
                 >
                   <i class="fas fa-users me-1 icon-noir"></i>
                   l'équipe
@@ -295,7 +295,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="paiements-table">
           <tr>
             <td>N°6</td>
             <td>N°08</td>
@@ -445,6 +445,16 @@
             modal.show();
           });
         });
+      });
+    </script>
+    <script>
+      // Dès que la page est chargée, on récupère les paiements depuis PHP
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("paiements.php")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("paiements-table").innerHTML = data;
+          });
       });
     </script>
   </body>
