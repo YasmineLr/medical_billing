@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mon Profil - Dr. Youssef El Malki</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background-color: #f7f0f7;
+        font-family: Arial, sans-serif;
+        padding-top: 200px;
+      }
+
+      .header-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 9999;
+      }
+
+      .navbar-custom {
+        background-color: #28a745;
+        border-radius: 30px;
+        margin: 20px 20px 0 20px;
+      }
+
+      .social-icons img {
+        width: 24px;
+        margin: 0 5px;
+      }
+
+      .BUtton {
+        background-color: white;
+        border: 2px solid #28a745;
+        border-radius: 30px;
+        color: #28a745;
+        padding: 10px 20px;
+        margin: 20px 0 -20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .BUtton:hover {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .navbar-nav {
+        display: flex;
+        width: 100%;
+      }
+
+      .nav-item {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        border-radius: 30px;
+        cursor: pointer;
+      }
+
+      .nav-link {
+        color: white !important;
+      }
+
+      .icon-noir {
+        color: black;
+      }
+
+      .nav-item:hover {
+        background-color: #41c25f;
+      }
+
+      .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-item:hover {
+        background-color: #41c25f;
+      }
+
+      .custom-dropdown {
+        top: 100%;
+        left: 0;
+        margin-top: 0.5rem;
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        margin: 0px 90px 0px 30px;
+        padding: 0px 30px;
+        background-color: white;
+      }
+
+      .dropdown-item {
+        padding: 10px 40px;
+      }
+
+      .content {
+        padding: 15px;
+        margin-top: 0;
+        padding-top: 0;
+      }
+
+      .profile-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 1000px;
+        margin: auto;
+        position: relative;
+      }
+
+      .profile-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .profile-header img {
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        margin-right: 20px;
+      }
+
+      .profile-header h3 {
+        margin: 0;
+        color: #28a745;
+      }
+
+      .section-title {
+        font-weight: bold;
+        color: #28a745;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 5px;
+      }
+
+      .profile-info p {
+        margin-bottom: 8px;
+      }
+
+      .profile-info i {
+        margin-right: 10px;
+        color: #28a745;
+      }
+
+      footer {
+        margin-top: 40px;
+        font-size: 14px;
+        color: #777;
+        text-align: center;
+      }
+
+      /* Bouton Modifier sous la section profil */
+      .btn-modifier {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 25px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 25px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+        display: inline-block;
+      }
+
+      .btn-modifier:hover {
+        background-color: #1e7e34;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER & NAVBAR -->
+    <div class="header-container">
+      <div
+        class="container py-3 d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center">
+          <img
+            src="../icones/healthlogo.png"
+            alt="Logo"
+            class="me-2"
+            width="200vw"
+            height="200vh"
+            style="margin-bottom: -50vh; margin-top: -45vh"
+          />
+        </div>
+        <div>
+          <button class="BUtton">RENDEZ-VOUS</button>
+          <!-- Bouton Modifier retiré du header -->
+        </div>
+      </div>
+
+      <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+          <div class="collapse navbar-collapse justify-content-center">
+            <ul class="navbar-nav">
+              <li class="nav-item mx-1">
+                <a
+                  class="nav-link text-white d-flex align-items-center"
+                  href="cabinet.html"
+                >
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+                    width="20"
+                    class="me-1"
+                  />
+                  Cabinet
+                </a>
+              </li>
+              <li class="nav-item mx-1">
+                <a
+                  class="nav-link text-white d-flex align-items-center"
+                  href="pageequipe.html"
+                >
+                  <i class="fas fa-users me-1 icon-noir"></i>
+                  L'équipe
+                </a>
+              </li>
+              <li class="nav-item mx-1">
+                <a
+                  class="nav-link text-white d-flex align-items-center"
+                  href="#"
+                >
+                  <i class="fas fa-phone-alt me-1 icon-noir"></i>
+                  Contact
+                </a>
+              </li>
+              <li class="nav-item dropdown mx-1 active">
+                <a
+                  class="nav-link dropdown-toggle text-white d-flex align-items-center"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                >
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png"
+                    width="20"
+                    class="me-1"
+                  />
+                  Mon compte
+                </a>
+                <ul
+                  class="dropdown-menu custom-dropdown"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li>
+                    <a class="dropdown-item" href="page6.html">Mon profil</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="page4.html"
+                      >Historique de paiment</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="page5.html"
+                      >Mes rendez-vous</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="pageconnexion.html"
+                      >Déconnexion</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- CONTENU DU PROFIL -->
+    <div class="container mt-4">
+      <div class="profile-container">
+        <div class="profile-header">
+          <img src="https://via.placeholder.com/120" alt="Photo médecin" />
+          <div>
+            <h3>Dr. Youssef El Malki</h3>
+            <p>Médecin Généraliste</p>
+          </div>
+        </div>
+
+        <div class="profile-info">
+          <div class="section-title">Informations de contact</div>
+          <p><i class="fas fa-envelope"></i> youssef.elmalki@medicamaroc.ma</p>
+          <p><i class="fas fa-phone"></i> +212 6 12 34 56 78</p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> 34 Avenue Hassan II,
+            Casablanca, Maroc
+          </p>
+
+          <div class="section-title">Diplômes et formation</div>
+          <p>
+            <i class="fas fa-graduation-cap"></i> Doctorat en Médecine – Faculté
+            de Médecine de Casablanca (2014)
+          </p>
+          <p>
+            <i class="fas fa-graduation-cap"></i> Formation en Santé Publique –
+            Université Mohammed V, Rabat (2017)
+          </p>
+
+          <div class="section-title">Expérience professionnelle</div>
+          <p>
+            <i class="fas fa-briefcase"></i> Médecin de famille – Clinique Anfa,
+            Casablanca (2015–2019)
+          </p>
+          <p>
+            <i class="fas fa-briefcase"></i> Médecin généraliste libéral –
+            Cabinet privé (depuis 2019)
+          </p>
+
+          <div class="section-title">Spécialités & compétences</div>
+          <p>
+            <i class="fas fa-stethoscope"></i> Médecine générale et soins
+            primaires
+          </p>
+          <p>
+            <i class="fas fa-notes-medical"></i> Suivi des patients chroniques
+            (diabète, hypertension)
+          </p>
+          <p>
+            <i class="fas fa-syringe"></i> Vaccinations et dépistages préventifs
+          </p>
+
+          <div class="section-title">Langues parlées</div>
+          <p>
+            <i class="fas fa-language"></i> Arabe, Français, Amazigh, Anglais
+          </p>
+        </div>
+
+        <!-- Bouton Modifier en bas de la page -->
+        <button class="btn-modifier">Modifier</button>
+      </div>
+    </div>
+
+    <footer class="mt-5">
+      ©️ 2025 Cabinet Médical Marocain. Tous droits réservés.
+    </footer>
+  </body>
+</html>
