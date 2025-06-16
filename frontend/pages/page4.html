@@ -295,7 +295,11 @@
             <th>Actions</th>
           </tr>
         </thead>
+<<<<<<< HEAD
         <tbody>
+=======
+        <tbody id="paiements-table">
+>>>>>>> a636a1a7d3dd380460d161834dc6e62039e22bc5
           <tr>
             <td>N°6</td>
             <td>N°08</td>
@@ -447,5 +451,18 @@
         });
       });
     </script>
+<<<<<<< HEAD
+=======
+    <script>
+      // Dès que la page est chargée, on récupère les paiements depuis PHP
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("paiements.php")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("paiements-table").innerHTML = data;
+          });
+      });
+    </script>
+>>>>>>> a636a1a7d3dd380460d161834dc6e62039e22bc5
   </body>
 </html>

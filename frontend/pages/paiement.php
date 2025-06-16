@@ -53,4 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   header("Location: page1.html");
   exit;
 }
+<?php
+include 'get_factures.php'; // récupère et affiche les lignes du tableau
+?>
 ?>
