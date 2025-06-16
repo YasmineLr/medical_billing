@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inscription</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/authentification.css" />
+  </head>
+
+  <body>
+    <script src="../js/authentification.js"></script>
+
+    <div id="header-placeholder"></div>
+    <div class="main-content">
+      <div class="login-container">
+        <div class="login-tabs">
+          <a href="authentification.html" class="active">PREMIÈRE CONNEXION ?</a>
+          <a href="pageconnexion.html">J’AI DÉJÀ UN COMPTE</a>
+        </div>
+
+        <form id="signupForm">
+          <label for="nom">Nom *</label>
+          <input type="text" id="nom" placeholder="Votre nom" required />
+
+          <label for="prenom">Prénom *</label>
+          <input type="text" id="prenom" placeholder="Votre prénom" required />
+
+          <button type="submit">SUIVANT</button>
+        </form>
+
+        <div id="error" class="error-message"></div>
+      </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+  </body>
+</html>

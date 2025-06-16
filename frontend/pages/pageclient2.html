@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Medical Site - Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  
+
+
+    <link rel="stylesheet" href="../styles/pageclient2.css">  
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="header-container" >
+      <div
+      class="container py-3 d-flex justify-content-between align-items-center"
+    >
+      <div class="d-flex align-items-center">
+        <img
+          src="../icones/healthlogo.png"
+          alt="Logo"
+          class="me-2"
+          width="200vw"
+          height="200vh"
+          style="margin-bottom: -50vh; margin-top: -45vh"
+        />
+      </div>
+
+      <DIV>
+        <button class="button">RENDEZ-VOUS </button>
+      </DIV>
+
+      
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container">
+        <div class="collapse navbar-collapse justify-content-center">
+          <ul class="navbar-nav">
+            <li class="nav-item mx-1">
+              <a class="nav-link text-white d-flex align-items-center" href="#">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+                  width="20"
+                  class="me-1"
+                />
+                cabinet
+              </a>
+            </li>
+            <li class="nav-item mx-1 ">
+              <a class="nav-link text-white d-flex align-items-center" href="MON EQUIPE.html">
+                <i class="fas fa-users me-1 icon-noir"></i>
+                Equipe
+              </a>
+            </li>
+            <li class="nav-item  mx-1 " >
+                <a class="nav-link text-white d-flex align-items-center" href="#">
+                  <i class="fas fa-phone-alt me-1 icon-noir"></i>
+                Contact  
+                </a>
+              </li>
+              <li class="nav-item dropdown mx-1 active">
+                <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="navbarDropdown" role="button">
+                  <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" width="20" class="me-1" />
+                  Mon compte
+                </a>
+                <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="profil.html">Mon profil</a></li>
+                  <li><a class="dropdown-item" href="page1.css">Prendre un rendez-vous</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+                </ul>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+
+    </div> 
+    
+    <div class="text">
+      <h1 > <strong> Prenez votre rendez-vous en ligne </strong></h1>
+    </div> 
+
+    <!-- Main content -->
+    <div class="content-container">
+       
+        <div class="info-panel">
+            <form action="/backend/paiement.php" method="post" id="soignantForm">
+              <input type="hidden" name="soignant" id="hiddenSoignantInput">
+              <h2> <strong> Choisissez un soignant :</strong></h2>
+            
+            <div class="soignant-option no-preference">
+              <img src="../icones/docteur1.png"  class="soignant-img me-3">
+              <div>
+                <div class="soignant-name"> Dr Amine benali</div>
+                <div class="soignant-specialty">Généraliste</div>
+              </div>
+                
+            </div>
+            
+            <hr>
+            
+            <div class="soignant-option">
+              <img src="../icones/docteur2.jpg"  class="soignant-img me-3">
+              <div>
+                <div class="soignant-name"> Dr Ahmed chaoui</div>
+                <div class="soignant-specialty">Généraliste</div>
+              </div>
+            </div>
+            
+            <hr>
+            
+            <div class="soignant-option">
+              <img src="../icones/docteur3.jpg"  class="soignant-img me-3">
+              <div>
+                <div class="soignant-name"> Dr Hanae sabir</div>
+                <div class="soignant-specialty">Généraliste</div>
+              </div>
+            </div>
+             
+            <button type="button" id="confirmSoignant" class="pay-button">CONFIRMER VOTRE SOIGNANT</button>
+
+
+            </form>
+  
+
+        </div>
+
+       <script>
+  const soignants = document.querySelectorAll('.soignant-option');
+  let selectedSoignant = null;
+  fetch (""
+  )
+
+  soignants.forEach(soignant => {
+    soignant.addEventListener('click', () => {
+      soignants.forEach(s => s.classList.remove('selected'));
+      soignant.classList.add('selected');
+      selectedSoignant = soignant.getAttribute('data-soignant');
+    });
+  });
+
+  document.getElementById('soignantForm').addEventListener('submit', function (e) {
+    if (!selectedSoignant) {
+      e.preventDefault(); // Empêche l'envoi du formulaire
+      alert("Veuillez sélectionner un soignant avant de confirmer.");
+      return;
+    }
+
+    // Insère le nom du soignant dans l'input caché
+    document.getElementById('hiddenSoignantInput').value = selectedSoignant;
+  });
+</script>
+
+
+          <!-- Middle panel - Invoice details -->
+        <div class="invoice-panel">
+          <form action="/backend/paiement.php" method="post" id="serviceForm"> 
+           <input type="hidden" name="service" id="hiddenServiceInput">
+          <div class="invoice-header">
+           <h2><strong>Choisissez le service que vous convient :</strong></h2>
+          </div>
+
+          <div class="invoice-details">
+            <table>
+              <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Prix (MAD)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="service-row" data-service="consultation générale">
+                   
+                    <td>consultation générale</td>
+                    <td>300.00</td>
+                </tr>
+                <tr class="service-row" data-service="consultation en ligne">
+                
+                    <td>consultation en ligne</td>
+                    <td>250.00</td>
+                </tr>
+                <tr class="service-row" data-service="Visite à domile">   
+                    
+                    <td>Visite à domicile</td>
+                    <td>400.00</td>
+                </tr>
+                <tr class="service-row" data-service="Echographie">
+                    
+                    <td>Echographie</td>
+                    <td>200.00</td>
+                </tr>
+                <tr class="service-row" data-service="Electrocardiogramme">
+                    
+                    <td>Electrocardiogramme</td>
+                    <td>100.00</td>
+                </tr>
+              </tbody>
+           </table>
+         </div>
+ 
+          <button type="button" class="pay-button">CONFIRMER VOTRE SERVICE</button>
+          
+  
+          </form>
+
+         
+
+          <div class="mt-3 text-muted">
+           **Pour les consultations en ligne ou à domicile, le paiement en ligne est obligatoire afin de confirmer votre rendez-vous
+          </div>
+       </div>
+          
+
+       <script>
+  let selectedService = null;
+
+  // Gère la sélection de ligne
+  document.querySelectorAll('.service-row').forEach(row => {
+    row.addEventListener('click', () => {
+      document.querySelectorAll('.service-row').forEach(r => r.classList.remove('selected'));
+      row.classList.add('selected');
+      selectedService = row.getAttribute('data-service');
+    });
+  });
+
+  
+
+  // Gère le bouton "CONFIRMER LE CHOIX" (soumission formulaire)
+  document.getElementById('serviceForm').addEventListener('submit', function(event) {
+    if (!selectedService) {
+      event.preventDefault(); // Empêche l'envoi du formulaire
+      alert("Veuillez sélectionner un service avant de confirmer.");
+    } else {
+      // Remplir le champ caché avec le service choisi
+      document.getElementById('hiddenServiceInput').value = selectedService;
+      // Le formulaire s'envoie normalement
+    }
+  });
+</script>
+
+
+        <input type="hidden" name="soignant" value="Dr Dupont">
+        <input type="hidden" name="service" value="Consultation">
+        <input type="hidden" name="amount" value="50">
+
+
+
+        <!-- Right panel - Payment -->
+       <div class="payment-panel">
+         <div class="payment-content">
+          
+         <form id="payment-form" action="/backend/paiement.php" method="POST">
+        <div class="payment-methods" id="card-selection">
+          <img src="../icones/mastercard.png" alt="MasterCard" data-card="MasterCard">
+          <img src="../icones/paypal.png" alt="PayPal" data-card="PayPal">
+          <img src="../icones/visa.png" alt="Visa" data-card="Visa">
+          <img src="../icones/cmi.png" alt="CMI" data-card="CMI">
+        </div>
+        <input type="hidden" name="card_type" id="card-type">
+
+        <div class="form-group">
+          <label>Nom sur la carte</label>
+          <input type="text" name="card_name" id="card-name" placeholder="Nom">
+          <div class="error-message" id="error-name"></div>
+        </div>
+
+        <div class="form-group">
+          <label>N° de carte</label>
+          <div class="card-input">
+            <input type="text" name="card_number" id="card-number" placeholder="•••• •••• •••• ••••">
+            <i class="far fa-credit-card"></i>
+          </div>
+          <div class="error-message" id="error-number"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Date d'expiration</label>
+          <input type="text" name="card_expiry" id="card-expiry" placeholder="MM/AA">
+          <div class="error-message" id="error-expiry"></div>
+        </div>
+
+        <button type="submit" class="pay-button">Payer</button>
+      </form>
+
+      <form action="/backend/facture.php" method="POST">
+        <button type="submit" class="download-button">
+          <i class="fas fa-download"></i>
+          Télécharger la facture PDF
+        </button>
+      </form>
+
+      <div id="success-message"></div>
+    </div>
+  </div>
+
+  <script>
+    // Gestion de la sélection du type de carte
+    const cards = document.querySelectorAll('.payment-methods img');
+    const cardTypeInput = document.getElementById('card-type');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        cardTypeInput.value = card.dataset.card;
+      });
+    });
+
+    // Validation JavaScript simple
+    document.getElementById('payment-form').addEventListener('submit', function (e) {
+      let isValid = true;
+
+      const name = document.getElementById('card-name').value.trim();
+      const number = document.getElementById('card-number').value.trim();
+      const expiry = document.getElementById('card-expiry').value.trim();
+
+      document.getElementById('error-name').innerText = '';
+      document.getElementById('error-number').innerText = '';
+      document.getElementById('error-expiry').innerText = '';
+
+      if (!name) {
+        document.getElementById('error-name').innerText = 'Nom requis';
+        isValid = false;
+      }
+      if (!number || !/^\d{16}$/.test(number.replace(/\s/g, ''))) {
+        document.getElementById('error-number').innerText = 'Numéro invalide';
+        isValid = false;
+      }
+      if (!expiry || !/^\d{2}\/\d{2}$/.test(expiry)) {
+        document.getElementById('error-expiry').innerText = 'Date invalide';
+        isValid = false;
+      }
+
+      if (!cardTypeInput.value) {
+        alert("Veuillez sélectionner un type de carte.");
+        isValid = false;
+      }
+
+      if (!isValid) {
+        e.preventDefault();
+      }
+    });
+  </script>
+
+
+
+  </div>
+
+      
+    
+    <div >
+        <!-- footer.html -->
+    <!-- fichier : footer.html -->
+    <footer id="footer" class="bg-light text-dark pt-4 pb-4 mt-5">
+      <div class="container text-center">
+        <h5 class="mb-3">Contactez-nous</h5>
+        <p><i class="fas fa-envelope me-2"></i> cabinetmedical@example.com</p>
+        <p>
+          <i class="fas fa-map-marker-alt me-2"></i> 123 Rue des Médecins, Ville
+          Santé
+        </p>
+        <p><i class="fas fa-phone me-2"></i> +212 6 00 00 ,00 00</p>
+      </div>
+    </footer>
+
+        </div>
+    </div>
+    
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+
+
