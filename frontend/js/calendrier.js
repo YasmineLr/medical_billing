@@ -36,6 +36,10 @@ document.addEventListener("DOMContentLoaded", function() {
         .getElementById("rdvForm")
         .addEventListener("submit", function (e) {
           e.preventDefault();
+<<<<<<< HEAD
           window.location.href = "pageclient2.html";
+=======
+          document.getElementById("message").style.display = "block";
+>>>>>>> 70ae5ef39fefdbb7e4b2ada10dedc58e1e2f2541
         });
 });

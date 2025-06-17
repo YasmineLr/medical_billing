@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+<<<<<<< HEAD
 
       const role = localStorage.getItem('userRole');
       const link = document.getElementById('first-login-link');
@@ -8,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
         link.href = 'login_patient.html';
       }
 
+=======
+>>>>>>> 70ae5ef39fefdbb7e4b2ada10dedc58e1e2f2541
       fetch("../pages/header.html")
         .then((res) => res.text())
         .then((data) => {
@@ -26,17 +29,25 @@ document.addEventListener("DOMContentLoaded", function() {
           }
         });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 70ae5ef39fefdbb7e4b2ada10dedc58e1e2f2541
       document.getElementById("loginForm").addEventListener("submit", function (e) {
           e.preventDefault();
           const email = document.getElementById("email").value.trim();
           const password = document.getElementById("password").value.trim();
+<<<<<<< HEAD
           const role = localStorage.getItem('userRole');
+=======
+
+>>>>>>> 70ae5ef39fefdbb7e4b2ada10dedc58e1e2f2541
           fetch("/medical_billing/backend/check_login.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",
             },
+<<<<<<< HEAD
             body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&role=${encodeURIComponent(role)}`,})
             .then((response) => response.json())
             .then((data) => {
@@ -45,6 +56,15 @@ document.addEventListener("DOMContentLoaded", function() {
                   window.location.href = "calendrier.html";
                 else if(role == 'medecin')
                   window.location.href = "pageequipe.html";
+=======
+            body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`,})
+            .then((response) => response.json())
+            .then((data) => {
+            console.log(email);
+            console.log(password);
+              if (data.success) {
+                window.location.href = "pageequipe.html";
+>>>>>>> 70ae5ef39fefdbb7e4b2ada10dedc58e1e2f2541
               } else {
                 document.getElementById("error").textContent =
                   "Identifiants incorrects.";

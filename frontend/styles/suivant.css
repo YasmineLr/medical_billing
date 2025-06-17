@@ -1,158 +1,158 @@
-      html {
-        scroll-behavior: smooth;
-      }
+html {
+  scroll-behavior: smooth;
+}
 
-      body {
-        background-color: #f7f0f7;
-        margin: 0;
-        font-family: "Open Sans",sans-serif;
-      }
+body {
+  background-color: #f7f0f7;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
 
-      #header-placeholder,
-      #footer-placeholder {
-        width: 100%;
-      }
+#header-placeholder,
+#footer-placeholder {
+  width: 100%;
+}
 
-      .main-content {
-        display: flex;
-        justify-content: center;
-        padding-top: 50px;
-      }
+.main-content {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
 
-      .login-container {
-        background-color: white;
-        border: 5px solid #d3d3d3;
-        border-radius: 10px;
-        padding: 20px;
-        width: 320px;
-        box-sizing: border-box;
-        text-align: left;
-      }
+.login-container {
+  background-color: white;
+  border: 5px solid #d3d3d3;
+  border-radius: 10px;
+  padding: 20px;
+  width: 320px;
+  box-sizing: border-box;
+  text-align: left;
+}
 
-      .login-container h2 {
-        text-align: center;
-        color: #28a745;
-        margin-bottom: 20px;
-        font-size: 20px;
-      }
+.login-container h2 {
+  text-align: center;
+  color: #28a745;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
 
-      .login-container label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 14px;
-        color: #333;
-      }
+.login-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
 
-      .login-container input,
-      .login-container select {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        font-size: 14px;
-        height: 40px;
-      }
+.login-container input,
+.login-container select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  height: 40px;
+}
 
-      .login-container button {
-        width: 100%;
-        padding: 10px;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 14px;
-        font-weight: bold;
-        cursor: pointer;
-      }
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-      .error-message {
-        color: red;
-        font-size: 13px;
-        text-align: center;
-        margin-top: 10px;
-      }
-          .dropdown {
-      position: relative;
-      width: 100%;
-      margin-bottom: 15px;
-    }
+.error-message {
+  color: red;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 10px;
+}
+.dropdown {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
 
-    .dropdown-toggle {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 10px;
-      background-color: white;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-      height: 40px;
-      box-sizing: border-box;
-    }
+.dropdown-toggle {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  height: 40px;
+  box-sizing: border-box;
+}
 
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 10px 0;
-      display: none;
-      max-height: 180px;
-      overflow-y: auto;
-      z-index: 10;
-    }
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  display: none;
+  max-height: 180px;
+  overflow-y: auto;
+  z-index: 10;
+}
 
-    .dropdown.open .dropdown-menu {
-      display: block;
-    }
+.dropdown.open .dropdown-menu {
+  display: block;
+}
 
-    .dropdown label {
-      display: flex;
-      align-items: center;
-      padding: 8px 16px;
-      font-size: 14px;
-      cursor: pointer;
-    }
+.dropdown label {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
 
-    .dropdown label:hover {
-      background-color: #f9f9f9;
-    }
+.dropdown label:hover {
+  background-color: #f9f9f9;
+}
 
-    .dropdown input[type="checkbox"] {
-      appearance: none;
-      width: 16px;
-      height: 16px;
-      border: 2px solid #888;
-      border-radius: 4px;
-      margin-right: 10px;
-      position: relative;
-    }
+.dropdown input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #888;
+  border-radius: 4px;
+  margin-right: 10px;
+  position: relative;
+}
 
-    .dropdown input[type="checkbox"]:checked {
-      background-color: #28a745;
-      border-color: #28a745;
-    }
+.dropdown input[type="checkbox"]:checked {
+  background-color: #28a745;
+  border-color: #28a745;
+}
 
-    .dropdown input[type="checkbox"]:checked::after {
-      content: "✓";
-      color: white;
-      position: absolute;
-      font-size: 12px;
-      left: 3px;
-      top: -1px;
-    }
+.dropdown input[type="checkbox"]:checked::after {
+  content: "✓";
+  color: white;
+  position: absolute;
+  font-size: 12px;
+  left: 3px;
+  top: -1px;
+}
 
-    .arrow {
-      transition: transform 0.2s ease;
-    }
+.arrow {
+  transition: transform 0.2s ease;
+}
 
-    .dropdown.open .arrow {
-      transform: rotate(180deg);
-    }
+.dropdown.open .arrow {
+  transform: rotate(180deg);
+}

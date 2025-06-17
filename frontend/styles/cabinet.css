@@ -1,64 +1,63 @@
-      html {
-        scroll-behavior: smooth;
-      }
+html {
+  scroll-behavior: smooth;
+}
 
-      body {
-        margin: 0;
-        font-family: "Open Sans",sans-serif;
-        background-color: #fdfdfd;
-      }
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background-color: #fdfdfd;
+}
 
-      #header-placeholder,
-      #footer-placeholder {
-        width: 100%;
-      }
+#header-placeholder,
+#footer-placeholder {
+  width: 100%;
+}
 
-      .hero-section {
-        background: url("../icones/cabinet.png") no-repeat center
-          center;
-        background-size: cover;
-        background-color: #32b05e;
-        color: white;
-        padding: 100px 30px;
-        text-align: left;
-      }
+.hero-section {
+  background: url("../icones/cabinet.png") no-repeat center center;
+  background-size: cover;
+  background-color: #32b05e;
+  color: white;
+  padding: 100px 30px;
+  text-align: left;
+}
 
-      .hero-section h1 {
-        font-size: 48px;
-        font-weight: bold;
-      }
+.hero-section h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
 
-      .hero-section p {
-        font-size: 20px;
-        margin-top: 20px;
-      }
+.hero-section p {
+  font-size: 20px;
+  margin-top: 20px;
+}
 
-      .content-section {
-        padding: 50px 15%;
-        color: #333;
-      }
+.content-section {
+  padding: 50px 15%;
+  color: #333;
+}
 
-      .content-section h2 {
-        color: #32b05e;
-        font-weight: bold;
-        margin-bottom: 20px;
-      }
+.content-section h2 {
+  color: #32b05e;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
-      .content-section img {
-        max-width: 100%;
-        border-radius: 10px;
-        margin-top: 20px;
-      }
+.content-section img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+}
 
-      .content-section a {
-        color: #32b05e;
-        text-decoration: none;
-      }
+.content-section a {
+  color: #32b05e;
+  text-decoration: none;
+}
 
-      .content-section a:hover {
-        text-decoration: underline;
-      }
+.content-section a:hover {
+  text-decoration: underline;
+}
 
-      .content-section strong {
-        color: #222; /* pour éviter le bleu automatique des <strong> si lié à Bootstrap */
-      }
+.content-section strong {
+  color: #222; /* pour éviter le bleu automatique des <strong> si lié à Bootstrap */
+}
