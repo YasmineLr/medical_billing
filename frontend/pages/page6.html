@@ -290,7 +290,7 @@
     <div class="container mt-4">
       <div class="profile-container">
         <div class="profile-header">
-          <img src="https://via.placeholder.com/120" alt="Photo médecin" />
+          <img src="../icones/docteur1.jpg" alt="photo de docteur" />
           <div>
             <h3>Dr. Youssef El Malki</h3>
             <p>Médecin Généraliste</p>
@@ -347,11 +347,29 @@
 
         <!-- Bouton Modifier en bas de la page -->
         <button class="btn-modifier">Modifier</button>
+        <button class="btn-supprimer">Supprimer le compte</button>
       </div>
     </div>
 
     <footer class="mt-5">
       ©️ 2025 Cabinet Médical Marocain. Tous droits réservés.
     </footer>
+    <script>
+      document.querySelector(".btn-modifier").addEventListener("click", () => {
+        // Par exemple, rediriger vers une page d'édition :
+        window.location.href = "edit-profil.html";
+      });
+
+      document.querySelector(".btn-supprimer").addEventListener("click", () => {
+        if (confirm("Êtes-vous sûr de vouloir supprimer ce compte ?")) {
+          // Action de suppression :
+          // (ici simplement une alerte, mais dans la réalité ce seraient une demande au serveur)
+          alert("Le compte a été supprimé avec succès.");
+
+          // Rediriger vers la page d'accueil, par exemple :
+          window.location.href = "index.html";
+        }
+      });
+    </script>
   </body>
 </html>
