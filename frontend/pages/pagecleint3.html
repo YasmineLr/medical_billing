@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prendre un Rendez-vous</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f8fa;
+    }
+
+    .content-container {
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .info-panel, .invoice-panel {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .soignant-option {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 10px;
+    }
+
+    .soignant-option:hover,
+    .soignant-option.selected {
+      background-color: #e8f4ff;
+      border: 1px solid #2196f3;
+    }
+
+    .soignant-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+
+    .service-row {
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .service-row:hover,
+    .service-row.selected {
+      background-color: #e8f4ff;
+      border-left: 4px solid #2196f3;
+    }
+
+    .submit-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 30px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content-container">
+    <h1 class="mb-4 text-center">Prendre un rendez-vous</h1>
+
+    <form id="rdvForm">
+      <input type="hidden" name="soignant" id="hiddenSoignantInput" required>
+      <input type="hidden" name="service" id="hiddenServiceInput" required>
+
+      <!-- Soignants -->
+      <div class="info-panel">
+        <h4><strong>Choisissez un soignant :</strong></h4>
+        <div class="soignant-option">
+          <img src="../icones/docteur1.png" class="soignant-img">
+          <div>
+            <div class="soignant-name">Dr Amine benali</div>
+            <div class="soignant-specialty">Généraliste</div>
+          </div>
+        </div>
+        <div class="soignant-option">
+          <img src="../icones/docteur2.jpg" class="soignant-img">
+          <div>
+            <div class="soignant-name">Dr Ahmed chaoui</div>
+            <div class="soignant-specialty">Généraliste</div>
+          </div>
+        </div>
+        <div class="soignant-option">
+          <img src="../icones/docteur3.jpg" class="soignant-img">
+          <div>
+            <div class="soignant-name">Dr Hanae sabir</div>
+            <div class="soignant-specialty">Généraliste</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="invoice-panel">
+        <h4><strong>Choisissez un service :</strong></h4>
+        <table class="table mt-3">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Prix (MAD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="service-row" data-service="consultation générale"><td>consultation générale</td><td>300.00</td></tr>
+            <tr class="service-row" data-service="consultation en ligne"><td>consultation en ligne</td><td>250.00</td></tr>
+            <tr class="service-row" data-service="Visite à domicile"><td>Visite à domicile</td><td>400.00</td></tr>
+            <tr class="service-row" data-service="Echographie"><td>Echographie</td><td>200.00</td></tr>
+            <tr class="service-row" data-service="Electrocardiogramme"><td>Electrocardiogramme</td><td>100.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="error-message" id="errorMessage"></div>
+
+      <button type="submit" class="submit-btn">Confirmer votre rendez-vous</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const soignants = document.querySelectorAll('.soignant-option');
+      const services = document.querySelectorAll('.service-row');
+      const hiddenSoignantInput = document.getElementById('hiddenSoignantInput');
+      const hiddenServiceInput = document.getElementById('hiddenServiceInput');
+      const errorMsg = document.getElementById("errorMessage");
+
+      // Sélection soignant
+      soignants.forEach(soignant => {
+        soignant.addEventListener('click', () => {
+          soignants.forEach(s => s.classList.remove('selected'));
+          soignant.classList.add('selected');
+          hiddenSoignantInput.value = soignant.querySelector('.soignant-name').textContent.trim();
+          errorMsg.textContent = "";
+        });
+      });
+
+      // Sélection service
+      services.forEach(service => {
+        service.addEventListener('click', () => {
+          services.forEach(s => s.classList.remove('selected'));
+          service.classList.add('selected');
+          hiddenServiceInput.value = service.getAttribute('data-service');
+          errorMsg.textContent = "";
+        });
+      });
+
+      // Form submit via fetch
+      document.getElementById("rdvForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const soignant = hiddenSoignantInput.value;
+        const service = hiddenServiceInput.value;
+
+        if (!soignant || !service) {
+          errorMsg.textContent = "⚠ Veuillez sélectionner un soignant ET un service.";
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("soignant", soignant);
+        formData.append("service", service);
+
+        fetch("../../backend/enregistrer_rendezvous.php", {
+          method: "POST",
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            window.location.href = "paiement.html";
+          } else {
+            errorMsg.textContent = "Erreur : " + data.message;
+          }
+        })
+        .catch(error => {
+          console.error("Erreur :", error);
+          errorMsg.textContent = "Erreur de communication avec le serveur.";
+        });
+      });
+    });
+  </script>
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const soignants = document.querySelectorAll('.soignant-option');
+    const services = document.querySelectorAll('.service-row');
+    const hiddenSoignantInput = document.getElementById('hiddenSoignantInput');
+    const hiddenServiceInput = document.getElementById('hiddenServiceInput');
+    const errorMsg = document.getElementById("errorMessage");
+
+    // Sélection soignant
+    soignants.forEach(soignant => {
+      soignant.addEventListener('click', () => {
+        soignants.forEach(s => s.classList.remove('selected'));
+        soignant.classList.add('selected');
+        hiddenSoignantInput.value = soignant.querySelector('.soignant-name').textContent.trim();
+        errorMsg.textContent = "";
+      });
+    });
+
+    // Sélection service
+    services.forEach(service => {
+      service.addEventListener('click', () => {
+        services.forEach(s => s.classList.remove('selected'));
+        service.classList.add('selected');
+        hiddenServiceInput.value = service.getAttribute('data-service');
+        errorMsg.textContent = "";
+      });
+    });
+
+    // Form submit via fetch
+    document.getElementById("rdvForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const soignant = hiddenSoignantInput.value;
+      const service = hiddenServiceInput.value;
+
+      if (!soignant || !service) {
+        errorMsg.textContent = "⚠ Veuillez sélectionner un soignant ET un service.";
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("soignant", soignant);
+      formData.append("service", service);
+
+      fetch("../../backend/enregitder_rendezvous1.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          window.location.href = "paiement.html";
+        } else {
+          errorMsg.textContent = "Erreur : " + data.message;
+        }
+      })
+      .catch(error => {
+        console.error("Erreur :", error);
+        errorMsg.textContent = "Erreur de communication avec le serveur.";
+      });
+    });
+  });
+</script>
+</body>
+</html>

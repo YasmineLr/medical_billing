@@ -1,4 +1,4 @@
-body {
+ body {
     background-color: white;
     font-family: Arial, sans-serif;
     padding-top: 150px;
@@ -37,15 +37,10 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
     font-weight: bold;
     cursor: pointer;
+   text-decoration:none ;
   }
-  .BUtton:hover {
-    background-color: #28a745;
-    color: white;
-  }
+  
 
- .pay-button::selection {
-   background-color: #41c25f;
- }
  
   .navbar-nav {
     border-radius: 10px;
@@ -360,7 +355,30 @@ table th {
       color: #888;
     }
 
-    .pay-button
+     .pay-buttons {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 12px;
+      width: 100%;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+      .download-button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 12px;
+      width: 100%;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+   
     .download-button {
       background-color: #28a745;
       color: white;
@@ -373,19 +391,7 @@ table th {
       margin-top: 10px;
     }
 
-    .download-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
     .download-button i {
       margin-right: 10px;
     }
-
-    #success-message {
-      color: green;
-      font-weight: bold;
-      margin-top: 15px;
-    }
+  

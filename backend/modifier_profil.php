@@ -6,9 +6,12 @@ $db = 'ma_base';
 $user = 'root';
 $pass = '';
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Échec de la connexion : " . $conn->connect_error);
+try {
+    // Connexion PDO
+    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
 }
 
 $email = $_SESSION['email'] ?? null;
@@ -18,6 +21,7 @@ if (!$email) {
     exit;
 }
 
+// ✅ Mise à jour du profil si formulaire soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
@@ -27,32 +31,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adresse = $_POST['adresse'];
     $emailForm = $_POST['email'];
 
-    $sql = "UPDATE utilisateurs SET nom=?, prenom=?, age=?, sexe=?, telephone=?, adresse=? WHERE email=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssissss", $nom, $prenom, $age, $sexe, $telephone, $adresse, $emailForm);
-    if ($stmt->execute()) {
-        echo "Profil mis à jour avec succès.";
+    $sql = "UPDATE utilisateurs SET nom = ?, prenom = ?, age = ?, sexe = ?, telephone = ?, adresse = ? WHERE email = ?";
+    $stmt = $pdo->prepare($sql);
+    if ($stmt->execute([$nom, $prenom, $age, $sexe, $telephone, $adresse, $emailForm])) {
+        echo "✅ Profil mis à jour avec succès.";
     } else {
-        echo "Erreur : " . $conn->error;
+        echo "❌ Erreur lors de la mise à jour.";
     }
 }
 
+// ✅ Récupération des informations utilisateur
 $sql = "SELECT nom, prenom, age, sexe, telephone, adresse, email FROM utilisateurs WHERE email = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$result = $stmt->get_result();
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$email]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($result->num_rows === 1) {
-    $user = $result->fetch_assoc();
-} else {
-    echo "Utilisateur non trouvé";
+if (!$user) {
+    echo "Utilisateur non trouvé.";
     exit;
 }
-
-$conn->close();
 ?>
 
+<!-- ✅ Formulaire HTML -->
 <form method="post" action="">
     Nom: <input type="text" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" /><br>
     Prénom: <input type="text" name="prenom" value="<?= htmlspecialchars($user['prenom']) ?>" /><br>
