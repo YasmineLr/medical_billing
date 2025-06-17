@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Finaliser l'inscription</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/suivant.css">
+</head>
+
+<body>
+  <script src="../js/suivant.js"></script>
+
+  <div id="header-placeholder"></div>
+
+  <div class="main-content">
+    <div class="login-container">
+      <h2>Compléter votre inscription</h2>
+      <form id="finalForm">
+        <label for="age">Âge *</label>
+        <input type="number" id="age" placeholder="Ex: 30" required />
+
+        <label for="sexe">Sexe *</label>
+        <select id="sexe" required>
+          <option value=""></option>
+          <option value="Homme">Homme</option>
+          <option value="Femme">Femme</option>
+        </select>
+
+        <label for="langues">Langues parlées *</label>
+        <div class="dropdown" id="languesDropdown">
+          <div class="dropdown-toggle" onclick="toggleDropdown('languesDropdown')">
+            <span id="selectedCount-langues">0 sélectionnée</span>
+          </div>
+          <div class="dropdown-menu">
+            <label><input type="checkbox" name="langues" value="Arabe" onchange="updateSelected('languesDropdown')"> Arabe</label>
+            <label><input type="checkbox" name="langues" value="Français" onchange="updateSelected('languesDropdown')"> Français</label>
+            <label><input type="checkbox" name="langues" value="Anglais" onchange="updateSelected('languesDropdown')"> Anglais</label>
+          </div>
+        </div>
+
+        <label for="competences">Compétences *</label>
+        <div class="dropdown" id="competencesDropdown">
+          <div class="dropdown-toggle" onclick="toggleDropdown('competencesDropdown')">
+            <span id="selectedCount-competences">0 sélectionné</span>
+          </div>
+          <div class="dropdown-menu">
+            <label><input type="checkbox" name="competences" value="Compétence1" onchange="updateSelected('competencesDropdown')"> Compétence1</label>
+            <label><input type="checkbox" name="competences" value="Compétence2" onchange="updateSelected('competencesDropdown')"> Compétence2</label>
+            <label><input type="checkbox" name="competences" value="Compétence3" onchange="updateSelected('competencesDropdown')"> Compétence3</label>
+          </div>
+        </div>
+
+        <label for="tel">Numéro de téléphone *</label>
+        <input type="tel" id="tel" placeholder="06 12 34 56 78" required />
+
+        <label for="adresse">Adresse *</label>
+        <input type="text" id="adresse" placeholder="Votre adresse" required />
+
+        <label for="email">Adresse email *</label>
+        <input type="email" id="email" placeholder="email@exemple.com" required />
+
+        <label for="code">Entrer le code *</label>
+        <input type="password" id="code" placeholder="Code secret" required />
+
+        <label for="confirmCode">Confirmer le code *</label>
+        <input type="password" id="confirmCode" placeholder="Répétez le code" required />
+
+        <button type="submit">S'INSCRIRE</button>
+      </form>
+      <div id="error" class="error-message"></div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    function toggleDropdown(id) {
+      document.getElementById(id).classList.toggle("open");
+    }
+    function updateSelected(id) {
+      const wrapper = document.getElementById(id);
+      const checkboxes = wrapper.querySelectorAll("input[type='checkbox']");
+      const selected = [...checkboxes].filter(cb => cb.checked);
+      const counter = wrapper.querySelector(`#selectedCount-${id.replace("Dropdown", "")}`);
+      counter.innerText = `${selected.length} sélectionné${selected.length > 1 ? 's' : ''}`;
+    }
+document.getElementById("finalForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const age = document.getElementById("age").value.trim();
+  const sexe = document.getElementById("sexe").value;
+  const tel = document.getElementById("tel").value.trim();
+  const adresse = document.getElementById("adresse").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const code = document.getElementById("code").value.trim();
+  const confirmCode = document.getElementById("confirmCode").value.trim();
+  const role = "medecin";
+  const langues = [...document.querySelectorAll("#languesDropdown input[name='langues']:checked")].map(cb => cb.value);
+  const competences = [...document.querySelectorAll("#competencesDropdown input[name='competences']:checked")].map(cb => cb.value);
+
+  if (!age || !sexe || !tel || !adresse || !email || !code || !confirmCode) {
+    document.getElementById("error").textContent =
+      "Veuillez remplir tous les champs.";
+  } else if (code !== confirmCode) {
+    document.getElementById("error").textContent =
+      "Les codes ne correspondent pas.";
+  } else {
+    const nom = localStorage.getItem("nom");
+    const prenom = localStorage.getItem("prenom");
+
+    const data = new URLSearchParams();
+    data.append("nom", nom);
+    data.append("prenom", prenom);
+    data.append("age", age);
+    data.append("sexe", sexe);
+    data.append("tel", tel);
+    data.append("adresse", adresse);
+    data.append("email", email);
+    data.append("mot_de_passe", code);
+    data.append("role", role);
+    data.append("langues", langues.join(","));
+    data.append("competences", competences.join(","));
+
+    fetch("/medical_billing/backend/add_patient.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: data.toString(),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          localStorage.removeItem("nom");
+          localStorage.removeItem("prenom");
+          window.location.href = "pageconnexion.html";
+        } else {
+          document.getElementById("error").textContent =
+            data.message || "Erreur lors de l'inscription.";
+        }
+      })
+      .catch((error) => {
+        console.error("Erreur :", error);
+        document.getElementById("error").textContent =
+          "Erreur de communication avec le serveur.";
+      });
+  }
+});
+  </script>
+</body>
+
+</html>
