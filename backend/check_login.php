@@ -10,9 +10,13 @@ try {
 
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
+    $role = $_POST['role'] ?? '';
 
     if ($email && $password) {
-        $stmt = $pdo->prepare("SELECT * FROM patient WHERE email = ? AND mot_de_passe = ?");
+        if($role == 'patient')
+            $stmt = $pdo->prepare("SELECT * FROM patients WHERE email = ? AND mot_de_passe = ?");
+        else if(role == 'medecin') 
+            $stmt = $pdo->prepare("SELECT * FROM medecins WHERE email = ? AND mot_de_passe = ?");
         $stmt->execute([$email, $password]);
 
         if ($stmt->rowCount() > 0) {

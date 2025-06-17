@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+<<<<<<< HEAD
+=======
 
         document.getElementById("finalForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -59,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
   });
+>>>>>>> 70ae5ef39fefdbb7e4b2ada10dedc58e1e2f2541
   fetch("../pages/header.html")
     .then((res) => res.text())
     .then((data) => {
@@ -70,4 +73,14 @@ document.addEventListener("DOMContentLoaded", function() {
     .then((data) => {
       document.getElementById("footer-placeholder").innerHTML = data;
     });
+<<<<<<< HEAD
+    window.addEventListener("click", function (e) {
+      document.querySelectorAll(".dropdown").forEach(dropdown => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove("open");
+        }
+      });
+    });
+=======
+>>>>>>> 70ae5ef39fefdbb7e4b2ada10dedc58e1e2f2541
 });

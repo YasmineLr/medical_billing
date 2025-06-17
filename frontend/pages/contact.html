@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Connexion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #contact-section {
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        margin: 20px;
+      }
+      #contact-section h2 {
+        margin-top: 0;
+      }
+</style>
+  </head>
+
+  <body>
+    <div id="header-placeholder"></div>
+
+      <div id="contact-section" style="display: flex; justify-content: space-between; align-items: center; background-color: #f4f4f4; padding: 20px; border-radius: 8px; margin: 20px; font-family: Arial, sans-serif;">
+        <div>
+          <h2>Contactez-nous</h2>
+          <p>Email : <a href="mailto:cabinetmedical@example.com">cabinetmedical@example.com</a></p>
+          <p>Adresse : 123 Rue des Médecins, Ville Santé</p>
+          <p>Téléphone : <a href="tel:+212600000000">+212 6 00 00 00 00</a></p>
+        </div>
+        <div>
+          <img src="../icones/oujda.png" alt="Illustration médicale" style="max-width: 350px; height: auto; border-radius: 8px;margin-right: 20vw;" />
+        </div>
+      </div>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch("../pages/header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+        });
+
+      fetch("../pages/footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+          if (window.location.hash === "#footer") {
+            const target = document.getElementById("footer");
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        });
+    </script>
+  </body>
+</html>
