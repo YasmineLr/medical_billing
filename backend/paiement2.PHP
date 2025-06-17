@@ -1,31 +1,28 @@
 <?php
 session_start();
+header('Content-Type: application/json');
 
 try {
     if (
         empty($_POST['card_type']) ||
         empty($_POST['card_name']) ||
         empty($_POST['card_number']) ||
-        empty($_POST['card_expiry']) ||
-        empty($_POST['id_rdv']) // <- récupère l'ID du rendez-vous
+        empty($_POST['card_expiry'])
     ) {
-        throw new Exception("Champs de paiement manquants.");
+        throw new Exception("Champs manquants.");
     }
 
-    $idRdv = (int) $_POST['id_rdv'];
     $typeCarte = htmlspecialchars($_POST['card_type']);
     $nomCarte = htmlspecialchars($_POST['card_name']);
     $numeroCarte = htmlspecialchars($_POST['card_number']);
     $expiration = htmlspecialchars($_POST['card_expiry']);
+    $idRdv = isset($_POST['id_rdv']) ? (int) $_POST['id_rdv'] : null;
 
-    // Connexion à la base
     $pdo = new PDO('mysql:host=localhost;dbname=ma_base;charset=utf8', 'root', '');
 
-    // Insertion dans la table paiements
     $stmt = $pdo->prepare("INSERT INTO paiement (id_rendezvous, type_carte, nom_carte, numero_carte, expiration) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$idRdv, $typeCarte, $nomCarte, $numeroCarte, $expiration]);
 
-    // Stocker en session (si tu veux)
     $_SESSION['paiement'] = [
         'type_carte' => $typeCarte,
         'nom_carte' => $nomCarte,
@@ -33,13 +30,11 @@ try {
         'expiration' => $expiration
     ];
 
-    $_SESSION['paiement_success'] = true;
-
-    // Redirection vers paiement.html
-    header("Location: ../frontend/pages/paiement.html");
-    exit;
+    echo json_encode(['success' => true]);
 
 } catch (Exception $e) {
-    echo "Erreur de paiement : " . $e->getMessage();
+    echo json_encode([
+        'success' => false,
+        'message' => $e->getMessage()
+    ]);
 }
-?>
